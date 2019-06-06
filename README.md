@@ -1,71 +1,65 @@
-# memory
-<<<<<<< HEAD
-```
-/usr/local/webserver/nginx/sbin/nginx -s reload            # 重新载入配置文件
-/usr/local/webserver/nginx/sbin/nginx -s reopen            # 重启 Nginx
-/usr/local/webserver/nginx/sbin/nginx -s stop              # 停止 Nginx
-```
-=======
 nginx.conf
 一、安装编译工具及库文件
-``yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel``
+```
+yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel
+```
 二、首先要安装 PCRE
 PCRE 作用是让 Nginx 支持 Rewrite 功能。
 
 1、下载 PCRE 安装包，下载地址： http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
-``
+```
 [root@bogon src]# cd /usr/local/src/
 [root@bogon src]# wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
-``
+```
 2、解压安装包:
-``
+```
 [root@bogon src]# tar zxvf pcre-8.35.tar.gz
-``
+```
 3、进入安装包目录
-``
+```
 [root@bogon src]# cd pcre-8.35
-``
+```
 4、编译安装
-``
+```
 [root@bogon pcre-8.35]# ./configure
 [root@bogon pcre-8.35]# make && make install
-``
+```
 5、查看pcre版本
-``
+```
 [root@bogon pcre-8.35]# pcre-config --version
-``
+```
 安装 Nginx
 1、下载 Nginx，下载地址：http://nginx.org/download/nginx-1.6.2.tar.gz
-``
+```
 [root@bogon src]# cd /usr/local/src/
 [root@bogon src]# wget http://nginx.org/download/nginx-1.6.2.tar.gz
-``
+```
 安装包
-``
+```
 [root@bogon src]# tar zxvf nginx-1.6.2.tar.gz
-``
+```
 3、进入安装包目录
-``
+```
 [root@bogon src]# cd nginx-1.6.2
-``
+```
 4、编译安装
-``
+```
 [root@bogon nginx-1.6.2]# ./configure --prefix=/usr/local/webserver/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre=/usr/local/src/pcre-8.35
 [root@bogon nginx-1.6.2]# make
 [root@bogon nginx-1.6.2]# make install
-``
+```
 5、查看nginx版本
-``
+```
 [root@bogon nginx-1.6.2]# /usr/local/webserver/nginx/sbin/nginx -v
-``
+```
 Nginx 配置
 创建 Nginx 运行使用的用户 www：
-``
+```
 [root@bogon conf]# /usr/sbin/groupadd www
 [root@bogon conf]# /usr/sbin/useradd -g www www
-``
+```
 配置nginx.conf ，将/usr/local/webserver/nginx/conf/nginx.conf替换为以下内容
-``
+```
 [root@bogon conf]#  cat /usr/local/webserver/nginx/conf/nginx.conf
 
 user www www;
@@ -142,22 +136,21 @@ http
   }
 
 }
-``
+```
 检查配置文件nginx.conf的正确性命令：
-``
+```
 [root@bogon conf]# /usr/local/webserver/nginx/sbin/nginx -t
-``
+```
 启动 Nginx
 Nginx 启动命令如下：
-``
+```
 [root@bogon conf]# /usr/local/webserver/nginx/sbin/nginx
-``
+```
 
 Nginx 其他命令
 以下包含了 Nginx 常用的几个命令：
-``
+```
 /usr/local/webserver/nginx/sbin/nginx -s reload            # 重新载入配置文件
 /usr/local/webserver/nginx/sbin/nginx -s reopen            # 重启 Nginx
 /usr/local/webserver/nginx/sbin/nginx -s stop              # 停止 Nginx
-``
->>>>>>> e1246b0f71aaaf5db02859a43d5bf05a3327e0bd
+```
