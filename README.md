@@ -154,3 +154,4 @@ Nginx 其他命令
 /usr/local/webserver/nginx/sbin/nginx -s reopen            # 重启 Nginx
 /usr/local/webserver/nginx/sbin/nginx -s stop              # 停止 Nginx
 ```
+...........
